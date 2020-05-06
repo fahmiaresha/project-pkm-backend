@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use \Illuminate\Support\Str;
 
 class Controller_Tata_Cara extends Controller
 {
@@ -13,7 +16,9 @@ class Controller_Tata_Cara extends Controller
      */
     public function index()
     {
-        //
+        $tata_cara = DB::table('tata_cara')->get();
+        // dump($bidang);
+        return view('tata_cara/index',['tata_cara'=>$tata_cara]);
     }
 
     /**
@@ -34,7 +39,16 @@ class Controller_Tata_Cara extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_tata_cara' => 'required','tata_cara' => 'required']);
+        
+        DB::table('tata_cara')->insert(['nama_tata_cara' => $request->nama_tata_cara,
+        'tata_cara' => $request->tata_cara
+        ]);
+
+        //mengalihkan halaman
+        return redirect('/tata_cara/index')->with('insert','Data Berhasil Di
+         Tambahkan');
     }
 
     /**
@@ -66,9 +80,18 @@ class Controller_Tata_Cara extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'nama_tata_cara' => 'required','tata_cara' => 'required']);
+
+            DB::table('tata_cara')->where('ID_TATACARA',$request->id)->update([
+                'nama_tata_cara' => $request->nama_tata_cara,
+                'tata_cara' => $request->tata_cara,
+            ]);
+        
+            return redirect('/tata_cara/index')->with('update','Data Berhasil Di
+            Edit');
     }
 
     /**
@@ -79,6 +102,8 @@ class Controller_Tata_Cara extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tata_cara')->where('ID_TATACARA',$id)->delete();
+        return redirect('/tata_cara/index')->with('delete','Data Berhasil Di
+        Hapus');
     }
 }

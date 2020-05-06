@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class Controller_Jenis_Kriteria extends Controller
 {
@@ -13,7 +15,9 @@ class Controller_Jenis_Kriteria extends Controller
      */
     public function index()
     {
-        //
+        $jk = DB::table('jenis_kriteria')->get();
+        // dump($bidang);
+        return view('jenis_kriteria/index',['jenis_kriteria'=>$jk]);
     }
 
     /**
@@ -34,7 +38,15 @@ class Controller_Jenis_Kriteria extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_jenis' => 'required']);
+        
+        DB::table('jenis_kriteria')->insert(['nama_jenis' => $request->nama_jenis,
+        ]);
+
+        //mengalihkan halaman
+        return redirect('/jenis_kriteria/index')->with('insert','Data Berhasil Di
+         Tambahkan');
     }
 
     /**
@@ -66,9 +78,18 @@ class Controller_Jenis_Kriteria extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'nama_jenis' => 'required']);
+    
+        DB::table('jenis_kriteria')->where('ID_JENIS_KRITERIA',$request->id)->update([
+            'nama_jenis' => $request->nama_jenis
+        ]);
+
+        //mengalihkan halaman
+        return redirect('/jenis_kriteria/index')->with('update','Data Berhasil Di
+         Tambahkan');
     }
 
     /**
@@ -79,6 +100,8 @@ class Controller_Jenis_Kriteria extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('jenis_kriteria')->where('ID_JENIS_KRITERIA',$id)->delete();
+        return redirect('/jenis_kriteria/index')->with('delete','Data Berhasil Di
+        Hapus');
     }
 }

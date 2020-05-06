@@ -35,6 +35,8 @@
    <!-- Toast-->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> 
   
+  <!-- ck editor -->
+   <script src="{{ asset('asset/ckeditor/ckeditor.js')}}"></script>
 
     @yield('head')
 </head>
@@ -52,6 +54,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
+      
         <div class="sidebar-brand-text mx-3"> Admin </div>
       </a>
 
@@ -61,50 +64,59 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('/dashboard') }}">
-        <i><img src="{{ asset('asset/login/images/dashboard.png') }}" width="16px" height="16px"></i>
+        <!-- <i><img src="{{ asset('asset/login/images/dashboard.png') }}" width="16px" height="16px"></i> -->
+        <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
+        <i class="fas fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
 
       <div class="sidebar-heading">
-        Tabel
+        Data Tabel
       </div>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ url('/bidang/index') }}">
-          <i ><img src="{{ asset('asset/login/images/kontak.png') }}" width="20px" height="20px"></i>
+          <!-- <i ><img src="{{ asset('asset/login/images/bidang.png') }}" width="25px" height="25px"></i> -->
           <!-- i></i>< -->
-          <span>Data Bidang</span>
+          <i class="fas fa-cube"></i>
+          <span> Bidang</span>
         </a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('/kontak/index') }}">
-          <i ><img src="{{ asset('asset/login/images/kontak.png') }}" width="20px" height="20px"></i>
-          <!-- i></i>< -->
-          <span>Data Kontak</span>
-        </a>
-      </li>
+     
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ url('/jenis_kriteria/index') }}">
-          <i ><img src="{{ asset('asset/login/images/kontak.png') }}" width="20px" height="20px"></i>
+          <!-- <i ><img src="{{ asset('asset/login/images/kriteria.png') }}" width="25px" height="25px"></i> -->
           <!-- i></i>< -->
-          <span>Data Jenis Kriteria</span>
+          <i class="fas fa-tasks"></i>
+          <span> Jenis Kriteria</span>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ url('/detail_kriteria/index') }}">
-          <i ><img src="{{ asset('asset/login/images/kontak.png') }}" width="20px" height="20px"></i>
+          <!-- <i ><img src="{{ asset('asset/login/images/kontak.png') }}" width="20px" height="20px"></i> -->
           <!-- i></i>< -->
-          <span>Data Detail Kriteria</span>
+          <i class="fab fa-stack-overflow"></i>
+          <span> Detail Kriteria</span>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ url('/tata_cara/index') }}">
-          <i ><img src="{{ asset('asset/login/images/kontak.png') }}" width="20px" height="20px"></i>
+          <!-- <i ><img src="{{ asset('asset/login/images/kontak.png') }}" width="20px" height="20px"></i> -->
           <!-- i></i>< -->
-          <span>Data Tata Cara</span>
+          <i class="fas fa-procedures"></i>
+          <span> Tata Cara</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ url('/kontak/index') }}">
+          <!-- <i ><img src="{{ asset('asset/login/images/contak.png') }}" width="20px" height="20px"></i> -->
+          <!-- i></i>< -->
+          <i class="fas fa-id-card"></i>
+          <span> Kontak</span>
         </a>
       </li>
       <!-- Divider -->
@@ -157,17 +169,19 @@
       </div>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-          <i><img src="{{ asset('asset/login/images/pengaturan.png') }}" width="16px" height="16px"></i>
+          <!-- <i><img src="{{ asset('asset/login/images/pengaturan.png') }}" width="16px" height="16px"></i> -->
+          <i class="fas fa-sync-alt"></i>
           <span>Settings</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
           <div class="bg-white py-2 collapse-inner rounded">
           <!-- <h6 class="collapse-header">Login Screens</h6> -->
           @if(\Session::has('super_admin') || \Session::has('owner') || \Session::has('admin'))
-          <a class="collapse-item" href="{{ url('/register') }}">Sign Up Account</a>
+          <!-- <a class="collapse-item" href="{{ url('/register') }}">Sign Up Account</a> -->
           @endif
-          <a class="collapse-item" href="{{ url('/logout') }}" data-toggle="modal" data-target="#logoutModal">Logout</a>
-            <div class="collapse-divider"></div>
+          <!-- <a class="collapse-item" href="{{ url('/logout') }}" data-toggle="modal" data-target="#logoutModal">Logout</a> -->
+          <a class="collapse-item" onClick="tampil_logout(event)" >Logout</a> 
+          <div class="collapse-divider"></div>
           </div>
         </div>
       </li>
@@ -392,7 +406,9 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Session::get('coba')}}</span>
                 
-                <img class="img-profile rounded-circle" src="https://cybercampus.unair.ac.id/foto_mhs/151811513020.JPG">
+                <!-- <img class="img-profile rounded-circle" src="https://cybercampus.unair.ac.id/foto_mhs/151811513020.JPG"> -->
+                <!-- <i class="fas fa-users" width="70px" height=></i> -->
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-circle" role="img" width="34px" height="34px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="svg-inline--fa fa-user-circle fa-w-16 fa-fw fa-2x"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z" class=""></path></svg>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -409,7 +425,7 @@
                   Activity Log
                 </a> -->
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ url('/logout') }}" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" onclick="tampil_logout();">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -444,7 +460,7 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -461,7 +477,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   
   
@@ -505,7 +521,35 @@
 
    <script>
        $('.mydatatable').DataTable();
-       
+            function tampil_logout(event){
+              // event.preventDefault();
+              // var urlToRedirect = event.currentTarget.getAttribute('href'); //use currentTarget because the click may be on the nested i tag and not a tag causing the href to be empty
+              // console.log(urlToRedirect); // verify if this is the right URL
+              
+              Swal.fire({
+                  title: 'Apakah Anda Ingin Logout ?',
+                  text: "Session Akan Di Reset !",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Logout'
+                  
+                }).then((result) => {
+                  if (result.value) {
+                    Swal.fire(
+                      'Success!',
+                      'Anda Berhasil Logout !',
+                      'success'
+                    
+                    )
+                    tampil_link();
+                  }
+                })
+            }
+            function tampil_link(){
+              window.location.href = "{{URL::to('/login')}}"
+            }
   </script>
       @yield('tambahscript')
     </html>

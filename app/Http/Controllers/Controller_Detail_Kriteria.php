@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class Controller_Detail_Kriteria extends Controller
 {
@@ -13,7 +15,16 @@ class Controller_Detail_Kriteria extends Controller
      */
     public function index()
     {
-        //
+        $bidang = DB::table('bidang')->get();
+        $jenis_kriteria = DB::table('jenis_kriteria')->get();
+        $detail_kriteria = DB::table('detil_kriteria')
+                            ->join('jenis_kriteria','detil_kriteria.ID_JENIS_KRITERIA','=','jenis_kriteria.ID_JENIS_KRITERIA')
+                            ->join('bidang','detil_kriteria.ID_BIDANG','=','bidang.ID_BIDANG')
+                            ->select('detil_kriteria.*','jenis_kriteria.NAMA_JENIS','bidang.NAMA_BIDANG')
+                            ->get();
+        
+        return view('detail_kriteria/index',['detail_kriteria'=>$detail_kriteria,'jenis_kriteria'=>$jenis_kriteria,
+        'bidang'=>$bidang]);
     }
 
     /**
@@ -23,7 +34,7 @@ class Controller_Detail_Kriteria extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +45,16 @@ class Controller_Detail_Kriteria extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $request->validate([
+        //     'ID_JENIS_KRITERIA' => 'required','ID_BIDANG' => 'required','URAIAN_KRITERIA' => 'required']);
+        
+        DB::table('detil_kriteria')->insert(['ID_JENIS_KRITERIA' => $request->id_jenis_kriteria,
+        'ID_BIDANG' => $request->id_bidang,'URAIAN_KRITERIA' => $request->uraian_kriteria
+        ]);
+
+        //mengalihkan halaman
+        return redirect('/bidang/index')->with('insert','Data Berhasil Di
+         Tambahkan');
     }
 
     /**
@@ -66,7 +86,7 @@ class Controller_Detail_Kriteria extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
     }

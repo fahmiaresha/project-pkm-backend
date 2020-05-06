@@ -5,13 +5,14 @@
 
 <div class="container">
         <div class="form-row">
-        <h2 class ="mt-3">Data Bidang</h2>
-       
+
+        <div class="form-group col-md-10">
+        <strong><font size="6" style="font-family:Arial, Helvetica, sans-serif;">Bidang</font></strong> 
         </div>
         <!-- Button trigger modal -->
-        <div class="form-row">
-        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
-        Tambah Data 
+        <div class="form-group col-md-2">
+        <button type="button" class="btn btn-success mt-4" data-toggle="modal" data-target="#exampleModal">
+        <i class="fas fa-plus-circle"></i> Create New Data 
         </button>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -67,6 +68,7 @@
                 </div>
                 <!-- tutup modal -->
             </div>
+        </div>
 
             @if (session('insert'))
             <font size="4"> 
@@ -140,7 +142,7 @@
                             <div class="modal-dialog modal-dialog-scrollable" role="document">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Form Edit Data Bidang</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Form Edit  Bidang</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
@@ -212,10 +214,10 @@
                                     Yakin Ingin Menghapus Data ?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="badge badge-success">
+                                    <button type="button" class="btn btn-success">
                                     <a href="/bidang/destroy/{{$bd->ID_BIDANG}}">
-                                    <font size="2" color="white">Yes</font></a></button>
-                                    <button type="button" class="badge badge-danger" data-dismiss="modal"><font size="2">No</font></button>
+                                    <font size="3" color="white">Yes</font></a></button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal"><font size="3">No</font></button>
                                 </div>
                                 </div>
                             </div>

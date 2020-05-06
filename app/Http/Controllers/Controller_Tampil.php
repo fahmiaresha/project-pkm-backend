@@ -13,7 +13,7 @@ class Controller_Tampil extends Controller
      */
     public function index()
     {
-        return view('template');
+        return view('dashboard');
     }
 
     /**
@@ -21,9 +21,9 @@ class Controller_Tampil extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function login()
     {
-        //
+        return view('login');
     }
 
     /**
