@@ -15,8 +15,13 @@ class Controller_Kontak extends Controller
      */
     public function index()
     {
+        if(!Session::get('login')){
+            return redirect('/login')->with('blm_login','Anda Belum Login !');
+        }
+        else{
         $kontak = DB::table('contact_person')->get();
         return view('kontak/index',['kontak'=>$kontak]);
+        }
     }
 
     /**

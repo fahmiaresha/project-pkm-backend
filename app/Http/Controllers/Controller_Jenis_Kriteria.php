@@ -15,9 +15,15 @@ class Controller_Jenis_Kriteria extends Controller
      */
     public function index()
     {
+        if(!Session::get('login')){
+            return redirect('/login')->with('blm_login','Anda Belum Login !');
+        }
+        else{
         $jk = DB::table('jenis_kriteria')->get();
+        $detail_kriteria = DB::table('detil_kriteria')->get();
         // dump($bidang);
-        return view('jenis_kriteria/index',['jenis_kriteria'=>$jk]);
+        return view('jenis_kriteria/index',['jenis_kriteria'=>$jk,'detail_kriteria'=>$detail_kriteria]);
+        }
     }
 
     /**

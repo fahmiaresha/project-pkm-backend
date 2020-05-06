@@ -15,6 +15,10 @@ class Controller_Detail_Kriteria extends Controller
      */
     public function index()
     {
+        if(!Session::get('login')){
+            return redirect('/login')->with('blm_login','Anda Belum Login !');
+        }
+        else{
         $bidang = DB::table('bidang')->get();
         $jenis_kriteria = DB::table('jenis_kriteria')->get();
         $detail_kriteria = DB::table('detil_kriteria')
@@ -25,6 +29,7 @@ class Controller_Detail_Kriteria extends Controller
         
         return view('detail_kriteria/index',['detail_kriteria'=>$detail_kriteria,'jenis_kriteria'=>$jenis_kriteria,
         'bidang'=>$bidang]);
+        }
     }
 
     /**
@@ -45,15 +50,14 @@ class Controller_Detail_Kriteria extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'ID_JENIS_KRITERIA' => 'required','ID_BIDANG' => 'required','URAIAN_KRITERIA' => 'required']);
+       
         
         DB::table('detil_kriteria')->insert(['ID_JENIS_KRITERIA' => $request->id_jenis_kriteria,
         'ID_BIDANG' => $request->id_bidang,'URAIAN_KRITERIA' => $request->uraian_kriteria
         ]);
 
         //mengalihkan halaman
-        return redirect('/bidang/index')->with('insert','Data Berhasil Di
+        return redirect('/detail_kriteria/index')->with('insert','Data Berhasil Di
          Tambahkan');
     }
 
@@ -88,7 +92,16 @@ class Controller_Detail_Kriteria extends Controller
      */
     public function update(Request $request)
     {
-        //
+            
+        DB::table('detil_kriteria')->where([['ID_JENIS_KRITERIA','=',$request->id],['ID_BIDANG','=',$request->id2]])->update([
+            'ID_JENIS_KRITERIA' => $request->id_jenis_kriteria,
+            'ID_BIDANG' => $request->id_bidang,
+            'URAIAN_KRITERIA' => $request->uraian_kriteria
+        ]);
+
+        //mengalihkan halaman
+        return redirect('/detail_kriteria/index')->with('update','Data Berhasil Di
+         Tambahkan');
     }
 
     /**
@@ -97,8 +110,10 @@ class Controller_Detail_Kriteria extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,$id2)
     {
-        //
+        DB::table('detil_kriteria')->where([['ID_JENIS_KRITERIA','=',$id],['ID_BIDANG','=',$id2]])->delete();
+        return redirect('/detail_kriteria/index')->with('delete','Data Berhasil Di
+        Hapus');
     }
 }

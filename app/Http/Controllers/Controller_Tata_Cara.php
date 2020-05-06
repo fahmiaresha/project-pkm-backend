@@ -16,9 +16,14 @@ class Controller_Tata_Cara extends Controller
      */
     public function index()
     {
+        if(!Session::get('login')){
+            return redirect('/login')->with('blm_login','Anda Belum Login !');
+        }
+        else{
         $tata_cara = DB::table('tata_cara')->get();
         // dump($bidang);
         return view('tata_cara/index',['tata_cara'=>$tata_cara]);
+        }
     }
 
     /**

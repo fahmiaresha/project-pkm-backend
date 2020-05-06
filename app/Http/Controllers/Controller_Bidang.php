@@ -14,9 +14,15 @@ class Controller_Bidang extends Controller
      */
     public function index()
     {
+        if(!Session::get('login')){
+            return redirect('/login')->with('blm_login','Anda Belum Login !');
+        }
+        else{
         $bidang = DB::table('bidang')->get();
+        $detail_kriteria = DB::table('detil_kriteria')->get();
         // dump($bidang);
-        return view('bidang/index',['bidang'=>$bidang]);
+        return view('bidang/index',['bidang'=>$bidang,'detail_kriteria'=>$detail_kriteria]);
+        }
     }
 
     /**

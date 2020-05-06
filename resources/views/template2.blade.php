@@ -549,7 +549,7 @@
                 })
             }
             function tampil_link(){
-              window.location.href = "{{URL::to('/login')}}"
+              window.location.href = "{{URL::to('/logout')}}"
             }
   </script>
       @yield('tambahscript')

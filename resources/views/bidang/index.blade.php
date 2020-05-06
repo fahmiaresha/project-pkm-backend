@@ -195,11 +195,25 @@
                             </div>
 
                             <!-- Button trigger modal -->
+                            
+                            
+                            @php $x=0; @endphp
+                            @foreach($detail_kriteria as $dk)
+                                @if($bd -> ID_BIDANG  == $dk-> ID_BIDANG)
+                                    @php $x=1; @endphp
+                                @endif
+                            @endforeach
+
+                            @if($x==0)
                                 <button type="button" class="badge badge-danger" data-toggle="modal" 
                                 data-target="#exampleModal{{$bd->ID_BIDANG}}"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M4.5 3a1 1 0 00-1 1v1a1 1 0 001 1H5v9a2 2 0 002 2h6a2 2 0 002-2V6h.5a1 1 0 001-1V4a1 1 0 00-1-1H12a1 1 0 00-1-1H9a1 1 0 00-1 1H4.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM10 7a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 0110 7zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"></path>
                                 </svg>Delete</button>
-
+                            @else
+                            <button type="button" class="badge badge-danger" onclick="tampil_cant_delete()"><svg class="bi bi-trash-fill" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M4.5 3a1 1 0 00-1 1v1a1 1 0 001 1H5v9a2 2 0 002 2h6a2 2 0 002-2V6h.5a1 1 0 001-1V4a1 1 0 00-1-1H12a1 1 0 00-1-1H9a1 1 0 00-1 1H4.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM10 7a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 0110 7zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"></path>
+                                </svg>Delete</button>
+                            @endif
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal{{$bd->ID_BIDANG}}" tabindex="0" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -232,4 +246,16 @@
                 </div>
                 </div>
 </div>
+@endsection
+@section('tambahscript')
+  <script>
+      function tampil_cant_delete(){
+        Swal.fire({
+        //   timer: 2000,
+          icon: 'error',
+          title: 'Data Tidak Bisa Di Hapus !',
+          text: 'Data Digunakan Detail Kriteria',
+        })
+      }
+  </script>
 @endsection

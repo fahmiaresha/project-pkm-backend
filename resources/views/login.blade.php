@@ -49,27 +49,6 @@
 <body>
 
 
-<!-- @if(session('logout'))
-      <script>
-      const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 4000,
-          timerProgressBar: true,
-          onOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        });
-
-        Toast.fire({
-          icon: 'success',
-          title: 'Anda Berhasil Login !',
-          padding: '2 rem'
-        });
-      </script>
-@endif -->
 
 @if(session('salah_password'))
       <font size="4"> 
@@ -79,6 +58,19 @@
           icon: 'error',
           title: 'Oops',
           text: 'Password Anda Salah !',
+        })
+    </script>
+    </font>
+@endif
+
+@if(session('blm_login'))
+      <font size="4"> 
+      <script>
+     Swal.fire({
+        //   timer: 2000,
+          icon: 'error',
+          title: 'Oops',
+          text: 'Anda Belum Login !',
         })
     </script>
     </font>
@@ -154,7 +146,7 @@
 		
 		<!-- copyright -->
 		<div class="copyright">
-			<p>© 2016 Universitas Airlangga . All rights reserved</p>
+			<p>© 2020 Universitas Airlangga . All rights reserved</p>
 		</div>
 		<!-- //copyright --> 
 	</div>

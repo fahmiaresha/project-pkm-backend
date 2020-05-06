@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard','Controller_Tampil@index');
 Route::get('/login','Controller_Tampil@login');
+Route::get('/logout','Controller_Tampil@logout');
 Route::post('/loginPost','Controller_Tampil@loginPost');
 
 Route::get('/bidang/index','Controller_Bidang@index');
@@ -42,7 +43,7 @@ Route::get('/tata_cara/destroy/{id}','Controller_Tata_Cara@destroy');
 Route::get('/detail_kriteria/index','Controller_Detail_Kriteria@index');
 Route::post('/detail_kriteria/update','Controller_Detail_Kriteria@update');
 Route::post('/detail_kriteria/store','Controller_Detail_Kriteria@store');
-Route::get('/detail_kriteria/destroy/{id}','Controller_Detail_Kriteria@destroy');
+Route::get('/detail_kriteria/destroy/{id}{id2}','Controller_Detail_Kriteria@destroy');
 
 
 
