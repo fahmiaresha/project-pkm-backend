@@ -12,10 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('/login');
 });
 
 Route::get('/dashboard','Controller_Tampil@index');
+Route::get('/login','Controller_Tampil@login');
+Route::post('/loginPost','Controller_Tampil@loginPost');
 
 Route::get('/bidang/index','Controller_Bidang@index');
 Route::post('/bidang/update','Controller_Bidang@update');

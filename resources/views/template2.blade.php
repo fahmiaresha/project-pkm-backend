@@ -404,7 +404,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Session::get('coba')}}</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Session::get('NAMA_ADMIN')}}</span>
                 
                 <!-- <img class="img-profile rounded-circle" src="https://cybercampus.unair.ac.id/foto_mhs/151811513020.JPG"> -->
                 <!-- <i class="fas fa-users" width="70px" height=></i> -->
@@ -488,7 +488,8 @@
     
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
     <!-- <script src="./src/bootstrap-input-spinner.js"></script> -->
-   
+    <script src="{{ asset('asset/admin/vendor/jquery/jquery.min.js') }}"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     
@@ -496,7 +497,7 @@
 
   <!-- Bootstrap core JavaScript-->
 
-  <script src="{{ asset('asset/admin/vendor/jquery/jquery.min.js') }}"></script>
+  
   <script src="{{ asset('asset/admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
   <!-- Core plugin JavaScript-->

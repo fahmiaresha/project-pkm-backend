@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class Controller_Tampil extends Controller
 {
@@ -26,6 +29,31 @@ class Controller_Tampil extends Controller
         return view('login');
     }
 
+    public function loginPost(Request $request){
+        $USERNAME_ADMIN = $request->USERNAME_ADMIN;
+        $PASSWORD_ADMIN = $request->PASSWORD_ADMIN;
+  
+        $data = DB::table('admin')->where('USERNAME_ADMIN',$USERNAME_ADMIN)->first();
+        if($data){ 
+              if($data->PASSWORD_ADMIN == $PASSWORD_ADMIN){
+                 Session::put('NAMA_ADMIN',$data->NAMA_ADMIN);
+                 Session::put('login',TRUE);
+                return redirect('/dashboard')->with('sukses_login','yay!');
+            }
+            else{
+                return redirect('/login')->with('salah_password','Password Anda , Salah !');
+            }
+        }
+        else{
+            return redirect('/login')->with('tidak_terdaftar','Anda Belum Terdaftar , Silahkan Create Acoount !');
+        }
+     }
+
+
+     public function logout(){
+        Session::flush();
+        return redirect('/login')->with('logout','Kamu sudah logout');
+    }
     /**
      * Store a newly created resource in storage.
      *
