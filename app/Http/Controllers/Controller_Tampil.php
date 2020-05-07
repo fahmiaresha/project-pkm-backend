@@ -16,7 +16,12 @@ class Controller_Tampil extends Controller
      */
     public function index()
     {
+        if(!Session::get('login')){
+            return redirect('/login')->with('blm_login','Anda Belum Login !');
+        }
+        else{
         return view('dashboard');
+        }
     }
 
     /**
