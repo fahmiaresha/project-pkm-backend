@@ -6,13 +6,17 @@
 <div class="container">
         <div class="form-row">
         <div class="form-group col-md-10">
+        <div class="animate__animated animate__backInLeft"  style=" animation-duration: 3s;">
         <strong><font size="6" style="font-family:Arial, Helvetica, sans-serif;">Detail Kriteria</font></strong> 
+        </div>
         </div>
         <!-- Button trigger modal -->
         <div class="form-group col-md-2">
+        <div class="animate__animated animate__flipInX"  style=" animation-duration: 3s;">
         <button type="button" class="btn btn-success mt-4" data-toggle="modal" data-target="#exampleModal">
         <i class="fas fa-plus-circle"></i> Create New Data 
         </button>
+        </div>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable" role="document">

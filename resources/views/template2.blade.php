@@ -38,6 +38,10 @@
   <!-- ck editor -->
    <script src="{{ asset('asset/ckeditor/ckeditor.js')}}"></script>
 
+   <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
     @yield('head')
 </head>
 
@@ -106,7 +110,8 @@
         <a class="nav-link collapsed" href="{{ url('/tata_cara/index') }}">
           <!-- <i ><img src="{{ asset('asset/login/images/kontak.png') }}" width="20px" height="20px"></i> -->
           <!-- i></i>< -->
-          <i class="fas fa-procedures"></i>
+          <!-- <i class="fas fa-procedures"></i> -->
+          <i class="fas fa-book-reader"></i>
           <span> Tata Cara</span>
         </a>
       </li>
@@ -521,6 +526,9 @@
 
 
    <script>
+      console.log('===============================');
+      console.log('Selamat Datang Di Halaman Admin PKM Universitas Airlangga 2020');
+      console.log('===============================');
        $('.mydatatable').DataTable();
             function tampil_logout(event){
               // event.preventDefault();

@@ -157,6 +157,8 @@
 </html>
 <script>
     window.onload=function(){
-       
+      console.log('===============================');
+      console.log('Selamat Datang Di Halaman Admin PKM Universitas Airlangga 2020');
+      console.log('===============================');
     }
 </script>

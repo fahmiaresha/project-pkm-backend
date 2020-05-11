@@ -23,7 +23,7 @@
         })
       </script>
 @endif
-
+<div class="animate__animated animate__fadeInUp"  style=" animation-duration: 3s;">
 <div class="container">
   <div class="form-row mb-2">
   <strong><font size="6" style="font-family:Arial, Helvetica, sans-serif;">Dashboard</font></strong> 
@@ -54,7 +54,7 @@
 		</div>
 
   </div>
-</div>
+
 
 
 @endsection
