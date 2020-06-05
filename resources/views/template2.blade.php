@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <link rel="icon" type="image/png" href="{{ asset('asset/admin/img/unair.png') }}">
    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -186,6 +187,7 @@
           @endif
           <!-- <a class="collapse-item" href="{{ url('/logout') }}" data-toggle="modal" data-target="#logoutModal">Logout</a> -->
           <a class="collapse-item" onClick="tampil_logout(event)" >Logout</a> 
+          <!-- <a class="collapse-item" onClick="tampil_logout(event)" >Coba</a>  -->
           <div class="collapse-divider"></div>
           </div>
         </div>
@@ -430,10 +432,15 @@
                   Activity Log
                 </a> -->
                 <div class="dropdown-divider"></div>
+                <a href="/ubahpassword" class="dropdown-item">
+                <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+                 Ubah Password
+                </a>
                 <a class="dropdown-item" onclick="tampil_logout();">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
+               
               </div>
             </li>
 

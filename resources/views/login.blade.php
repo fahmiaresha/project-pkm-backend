@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Halaman Login</title>
+<title>Login Admin</title>
+<link rel="icon" type="image/png" href="{{ asset('asset/admin/img/unair.png') }}">
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,6 +17,10 @@
             window.scrollTo(0, 1);
         }
     </script>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
 	<!-- Custom Theme files -->
 	<link href="{{ asset('asset/slide-login/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{{ asset('asset/slide-login/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" media="all" />
@@ -93,8 +98,8 @@
 <!-- main -->
 <div class="w3layouts-main"> 
 	<div class="bg-layer">
-		<h1><font color="white"><strong>Admin</strong></font></h1>
-		<div class="header-main" >
+        <h1 class="animate__animated animate__bounceInDown" style=" animation-duration: 3s;" ><font color="white"><strong>Admin</strong></font></h1>
+		<div class="header-main animate__animated animate__fadeInDown" style=" animation-duration: 3s;" >
 			<div class="main-icon">
 				<span class="fa fa-eercast"></span>
 			</div>
@@ -144,8 +149,9 @@
 			</div> -->
 		</div>
 		
-		<!-- copyright -->
-		<div class="copyright">
+        <!-- copyright -->
+        
+		<div class="copyright animate__animated animate__fadeInUp" style=" animation-duration: 3s;">
 			<p>© 2020 Universitas Airlangga . All rights reserved</p>
 		</div>
 		<!-- //copyright --> 

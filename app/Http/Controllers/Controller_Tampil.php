@@ -24,6 +24,10 @@ class Controller_Tampil extends Controller
         }
     }
 
+    public function ubahpassword(){
+        return view('ubahpassword');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

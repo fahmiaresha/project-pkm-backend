@@ -1,5 +1,5 @@
 @extends('template2')
-@section('title','Halaman Detail Kriteria')
+@section('title','Detail Kriteria')
 
 @section('konten')
 
