@@ -44,6 +44,9 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
   />
     @yield('head')
+
+    <!-- show password -->
+  
 </head>
 
 <body id="page-top">
@@ -186,7 +189,7 @@
           <!-- <a class="collapse-item" href="{{ url('/register') }}">Sign Up Account</a> -->
           @endif
           <!-- <a class="collapse-item" href="{{ url('/logout') }}" data-toggle="modal" data-target="#logoutModal">Logout</a> -->
-          <a class="collapse-item" onClick="tampil_logout(event)" >Logout</a> 
+          <a class="collapse-item" onClick="tampil_logout(event)" style="cursor: pointer;">Logout</a> 
           <!-- <a class="collapse-item" onClick="tampil_logout(event)" >Coba</a>  -->
           <div class="collapse-divider"></div>
           </div>
@@ -413,6 +416,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Session::get('NAMA_ADMIN')}}</span>
                 
+                
                 <!-- <img class="img-profile rounded-circle" src="https://cybercampus.unair.ac.id/foto_mhs/151811513020.JPG"> -->
                 <!-- <i class="fas fa-users" width="70px" height=></i> -->
                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-circle" role="img" width="34px" height="34px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="svg-inline--fa fa-user-circle fa-w-16 fa-fw fa-2x"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z" class=""></path></svg>
@@ -436,7 +440,7 @@
                 <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
                  Ubah Password
                 </a>
-                <a class="dropdown-item" onclick="tampil_logout();">
+                <a class="dropdown-item" onclick="tampil_logout();" style="cursor:pointer;">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>

@@ -25,8 +25,49 @@ class Controller_Tampil extends Controller
     }
 
     public function ubahpassword(){
-        return view('ubahpassword');
+        if(!Session::get('login')){
+            return redirect('/login')->with('blm_login','Anda Belum Login !');
+        }
+        else{
+        $admin = DB::table('admin')->get();
+        // dump($admin);
+        return view('ubahpassword',['admin'=>$admin]);
+        }
     }
+
+    public function updatepassword(Request $request){
+        // $admin = DB::table('admin')->get();
+        $request->validate([
+            'current_password' => 'required','password' => 'required','password_confirmation' => 'required']);
+            $data = DB::table('admin')->where('ID_ADMIN',$request->id)->first();
+            if($data->PASSWORD_ADMIN == $request->current_password){
+                // echo 'password cocok';
+                if($request->password == $request->password_confirmation){
+                    if($request->current_password != $request->password){
+                    // echo 'password dan konfirmasi password cocok';
+                      DB::table('admin')->where('ID_ADMIN',$request->id)->update([
+                        'PASSWORD_ADMIN' => $request->password,
+                      ]);
+                      return redirect('/ubahpassword')->with('password_sukses_diubah','bb');
+                    }
+                    else{
+                        // echo 'password lama dan baru tidak boleh sama ';
+                        return redirect('/ubahpassword')->with('password_baru_lama_sama','cc');
+                    }
+                }
+                else{
+                    // echo 'password dan konfirmasi password tidak cocok';
+                    return redirect('/ubahpassword')->with('password_konfirmasipassword_tdk_cocok','dd');
+                }
+            }
+            else{
+                // echo "password tidak cocok";
+                return redirect('/ubahpassword')->with('current_password_tidak_cocok','aaa');
+            }
+
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -46,6 +87,7 @@ class Controller_Tampil extends Controller
         if($data){ 
               if($data->PASSWORD_ADMIN == $PASSWORD_ADMIN){
                  Session::put('NAMA_ADMIN',$data->NAMA_ADMIN);
+                //  Session::put('ID_ADMIN',$data->ID_ADMIN);
                  Session::put('login',TRUE);
                 return redirect('/dashboard')->with('sukses_login','yay!');
             }

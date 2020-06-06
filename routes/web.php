@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/ubahpassword','Controller_Tampil@ubahpassword');
+Route::post('/updatepassword','Controller_Tampil@updatepassword');
 
 
 Route::get('/dashboard','Controller_Tampil@index');
