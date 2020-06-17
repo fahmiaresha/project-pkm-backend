@@ -48,6 +48,7 @@
 	<!-- web font -->
 	<link href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">
 	<!-- //web font -->
+   
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </head>
@@ -132,13 +133,18 @@
 					<!-- <div class="bottom">
 						<button class="btn">Log In</button>
                     </div> -->
+                 
+                    
                     <div class="container-login100-form-btn">
 						<button type="submit" class="login100-form-btn">
 							Log In
 						</button>
 					</div>
-				</form>	
-			</div>
+                </form>	
+            <div class="coba mt-3" style="text-align: right;">
+                    <a href="/lupapassword"><font size="2" style="color:skyblue">Lupa Password ?</font></a>
+                    </div>
+            </div>
 			<!-- <div class="social">
 				<ul>
 					<li>or login using : </li>
@@ -166,5 +172,6 @@
       console.log('===============================');
       console.log('Selamat Datang Di Halaman Admin PKM Universitas Airlangga 2020');
       console.log('===============================');
+
     }
 </script>

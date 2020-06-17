@@ -24,6 +24,39 @@ class Controller_Tampil extends Controller
         }
     }
 
+    public function lupapassword(){
+        return view('lupapassword');
+    }
+
+    public function getpassword(Request $request){
+        $request->validate([
+            'username' => 'required','email' => 'required|email']);
+        $email=$request->email;
+        $username=$request->username;
+            $cekemail = DB::table('admin')->where('EMAIL_ADMIN',$email)->first();
+            $cekusername = DB::table('admin')->where('USERNAME_ADMIN',$username)->first();
+            
+            if($cekemail!=null){
+                if($cekusername!=null){
+                   $hasil=$cekemail->PASSWORD_ADMIN;
+                //    dump($hasil);
+                   return redirect('/lupapassword')->with('get_pass',$hasil);
+                }
+                else{
+                    // echo "Username Tidak Ada !";
+                    return redirect('/lupapassword')->with('user_tdk_ada','a');
+                }
+            }
+            else{
+                // echo "Email Tidak Ada !";
+                return redirect('/lupapassword')->with('email_tdk_ada','b');
+            }
+           
+            
+          
+
+    }
+
     public function ubahpassword(){
         if(!Session::get('login')){
             return redirect('/login')->with('blm_login','Anda Belum Login !');
@@ -33,6 +66,37 @@ class Controller_Tampil extends Controller
         // dump($admin);
         return view('ubahpassword',['admin'=>$admin]);
         }
+    }
+
+    public function profile(){
+        if(!Session::get('login')){
+            return redirect('/login')->with('blm_login','Anda Belum Login !');
+        }
+        else{
+        $admin = DB::table('admin')->get();
+        // dump($admin);
+        return view('profile',['admin'=>$admin]);
+        }
+    }
+
+    public function updateprofile(Request $request){
+        $request->validate([
+            'nama_admin' => 'required',
+            'alamat_admin' => 'required',
+            'telp_admin' => 'required',
+            'email_admin' => 'required|email',
+            'username_admin' => 'required',
+            ]);
+
+            DB::table('admin')->where('ID_ADMIN',$request->id)->update([
+                'NAMA_ADMIN' => $request->nama_admin,
+                'ALAMAT_ADMIN' => $request->alamat_admin,
+                'NO_TELP_ADMIN' => $request->telp_admin,
+                'EMAIL_ADMIN' => $request->email_admin,
+                'USERNAME_ADMIN' => $request->username_admin
+            ]);
+
+            return redirect('/profile')->with('update_sukses','dd');
     }
 
     public function updatepassword(Request $request){
@@ -87,6 +151,7 @@ class Controller_Tampil extends Controller
         if($data){ 
               if($data->PASSWORD_ADMIN == $PASSWORD_ADMIN){
                  Session::put('NAMA_ADMIN',$data->NAMA_ADMIN);
+                 Session::put('id',$data->ID_ADMIN);
                 //  Session::put('ID_ADMIN',$data->ID_ADMIN);
                  Session::put('login',TRUE);
                 return redirect('/dashboard')->with('sukses_login','yay!');

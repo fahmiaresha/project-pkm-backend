@@ -189,7 +189,10 @@
           <!-- <a class="collapse-item" href="{{ url('/register') }}">Sign Up Account</a> -->
           @endif
           <!-- <a class="collapse-item" href="{{ url('/logout') }}" data-toggle="modal" data-target="#logoutModal">Logout</a> -->
+          <a href="profile" class="collapse-item" style="cursor: pointer;">Profile</a>
+          <a href="ubahpassword" class="collapse-item" style="cursor: pointer;">Ubah Password</a>
           <a class="collapse-item" onClick="tampil_logout(event)" style="cursor: pointer;">Logout</a> 
+          
           <!-- <a class="collapse-item" onClick="tampil_logout(event)" >Coba</a>  -->
           <div class="collapse-divider"></div>
           </div>
@@ -436,6 +439,11 @@
                   Activity Log
                 </a> -->
                 <div class="dropdown-divider"></div>
+                <a href="/profile" class="dropdown-item">
+                <i class="far fa-id-badge fa-sm fa-fw mr-2 text-gray-400"></i>
+                <!-- <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i> -->
+                  Profile
+                </a>
                 <a href="/ubahpassword" class="dropdown-item">
                 <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
                  Ubah Password

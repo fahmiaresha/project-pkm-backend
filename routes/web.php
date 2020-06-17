@@ -17,7 +17,10 @@ Route::get('/', function () {
 
 Route::get('/ubahpassword','Controller_Tampil@ubahpassword');
 Route::post('/updatepassword','Controller_Tampil@updatepassword');
-
+Route::get('/lupapassword','Controller_Tampil@lupapassword');
+Route::get('/profile','Controller_Tampil@profile');
+Route::post('/updateprofile','Controller_Tampil@updateprofile');
+Route::post('/getpassword','Controller_Tampil@getpassword');
 
 Route::get('/dashboard','Controller_Tampil@index');
 Route::get('/login','Controller_Tampil@login');
@@ -48,6 +51,8 @@ Route::get('/detail_kriteria/index','Controller_Detail_Kriteria@index');
 Route::post('/detail_kriteria/update','Controller_Detail_Kriteria@update');
 Route::post('/detail_kriteria/store','Controller_Detail_Kriteria@store');
 Route::get('/detail_kriteria/destroy/{id}{id2}','Controller_Detail_Kriteria@destroy');
+
+
 
 
 

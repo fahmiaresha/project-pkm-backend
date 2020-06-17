@@ -55,33 +55,30 @@
     </font>
 @endif
 
-
+<div class="animate__animated animate__fadeInUp"  style=" animation-duration: 3s;">
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
                     <strong><font size="5" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Update Password</font></strong>
-                    @php $x=Session::get('NAMA_ADMIN') @endphp
                     
-                    @foreach($admin as $ad )
-                    @if($x==$ad->NAMA_ADMIN)
-                        @php $y=$ad->ID_ADMIN; @endphp
-                    @endif
-                    @endforeach
+                    @php $z=Session::get('id') @endphp
+                    
+                   
                       
                     </div>
                     <div class="card-body">
                         <form method="POST" action="/updatepassword">
                             <!-- @method('patch') -->
                             @csrf
-                            <input type="hidden" name="id" value="{{$y}}"> <br/>
+                            <input type="hidden" name="id" value="{{$z}}"> <br/>
                             
                     <div class="form-group row" style="margin-top:-40px;" >
                         <label for="current_password" class="col-md-4 col-form-label text-md-left" style="margin-top: -25px;"><font size="4" style="font-family: Arial, Helvetica, sans-serif;">Current Password</font></label>
 
                         <div class="col-md-6 input-group" id="show_hide_password2">
-                            <input id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password">
+                            <input id="current_password" type="password" placeholder="Current Password" class="form-control @error('current_password') is-invalid @enderror" name="current_password">
                             <div class="input-group-append" style="padding-bottom: 15px;">
                                 <span class="input-group-text"><a href=""><i class="fa fa-eye" aria-hidden="true" style=" color:#333"></i> </a></span>
                                 </div>
@@ -97,7 +94,7 @@
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-left" style="margin-top: -25px;"><font size="4" style="font-family: Arial, Helvetica, sans-serif;">New Password</font></label>
                                 <div class="col-md-6 input-group" id="show_hide_password">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" >
+                                <input id="password" type="password" placeholder="New Password" class="form-control @error('password') is-invalid @enderror" name="password" >
                                 <div class="input-group-append" style="padding-bottom: 15px;">
                                 <span class="input-group-text"><a href=""><i class="fa fa-eye" aria-hidden="true" style=" color:#333"></i> </a></span>
                                 </div>
@@ -116,7 +113,7 @@
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-left" style="margin-top: -25px;"><font size="4" style="font-family: Arial, Helvetica, sans-serif;">Confirm Password</font></label>
 
                                 <div class="col-md-6 input-group"  id="show_hide_password3">
-                                    <input id="password-confirm" type="password" class="form-control  @error('password_confirmation') is-invalid @enderror" name="password_confirmation">
+                                    <input id="password-confirm" type="password" placeholder="Confirm Password" class="form-control  @error('password_confirmation') is-invalid @enderror" name="password_confirmation">
                                     <div class="input-group-append" style="padding-bottom: 15px;">
                                     <span class="input-group-text"><a href=""><i class="fa fa-eye" aria-hidden="true" style=" color:#333"></i> </a></span>
                                     </div>
@@ -147,6 +144,7 @@
             </div>
         </div>
     </div>
+</div>
 
 @endsection
 
